@@ -1,0 +1,72 @@
+#include <stdio.h>
+
+int main() {
+    int registrationCode = 314;  // Predefined registration code
+    int inputCode;
+    int choice = 0;
+    int courseChoice = 0;
+    char* registeredCourse = NULL;
+
+    // Ask for the registration code
+    printf("Enter your registration code: ");
+    scanf("%d", &inputCode);
+
+    // Check if registration code is correct
+    if (inputCode == registrationCode) {
+        printf("Welcome to the University Registration System!\n");
+
+        do {
+            // Display menu
+            printf("\n1. Register for courses\n");
+            printf("2. View student details\n");
+            printf("Enter any other number to exit.\n");
+            printf("Enter your choice: ");
+            scanf("%d", &choice);
+
+            if (choice == 1) {
+                // Display courses to register
+                printf("\nEnter a number to register course..\n");
+                printf("1. PF\n");
+                printf("2. Calculus\n");
+                printf("3. English\n");
+                printf("Enter your choice: ");
+                scanf("%d", &courseChoice);
+
+                // Register course based on choice
+                switch (courseChoice) {
+                    case 1:
+                        registeredCourse = "PF";
+                        printf("PF registered.\n");
+                        break;
+                    case 2:
+                        registeredCourse = "Calculus";
+                        printf("Calculus registered.\n");
+                        break;
+                    case 3:
+                        registeredCourse = "English";
+                        printf("English registered.\n");
+                        break;
+                    default:
+                        printf("Invalid choice. Please try again.\n");
+                        break;
+                }
+            } else if (choice == 2) {
+                // Display student details
+                printf("\nViewing student details.\n");
+                printf("Registered course: %s\n", (registeredCourse != NULL) ? registeredCourse : "None");
+                printf("Section: BCS 2A\n");
+                printf("Roll Number: %d\n", registrationCode);
+            } else {
+                // Exit message
+                printf("Exiting Program.\n");
+                break;
+            }
+
+        } while (choice == 1 || choice == 2);  // Continue looping until user exits
+
+    } else {
+        printf("Invalid registration code!\n");
+    }
+
+    return 0;
+}   
